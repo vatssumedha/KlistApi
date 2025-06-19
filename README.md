@@ -38,7 +38,7 @@ fun KListDemo() {
         .section("Meme Coins", memeCoins) {
             KListItem(it)
         }
-        .render()
+        .Render()
 }
 ```
 
