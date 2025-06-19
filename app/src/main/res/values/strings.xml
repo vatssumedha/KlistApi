@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">KListApi</string>
+    <string name="header_top_gainers">Top Gainers</string>
+    <string name="header_meme_coins">Meme Coins</string>
+</resources>
