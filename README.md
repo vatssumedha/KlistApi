@@ -1,17 +1,19 @@
 # KListApi – Fluent DSL for Jetpack Compose Lists
 
-KListApi is a modular, reusable list rendering API written in Kotlin using Jetpack Compose. It allows you to build powerful list screens using a clean, fluent DSL.
+KListApi is a Kotlin-based modular and reusable API for building list-based UIs using Jetpack Compose. It introduces a fluent DSL-style syntax that allows developers to define padding, headers, sections, clickable events, and animations for list content with ease and clarity.
 
 ---
 
 ## Features
 
-- Chainable configuration using Kotlin DSL
-- Supports padding, headers, sections, and click events
-- Works with any data type
-- Optional dividers and animations
+- Fluent Kotlin DSL using method chaining
+- Composable integration using `LazyColumn`
+- Configurable padding and header
+- Support for clickable items
+- Support for multiple sections with headers
+- Optional item dividers and animations
+- Modular file structure for maintainability
 - Material3 styling support
-- Designed for readability, reusability, and extendability
 
 ---
 
@@ -27,10 +29,60 @@ fun KListDemo() {
     KList.instance
         .padding(16.dp)
         .header("Top Gainers")
-        .items(topCoins) { KListItem(it) }
+        .items(topCoins) {
+            KListItem(it)
+        }
         .clickable { item ->
             Toast.makeText(context, item.toString(), Toast.LENGTH_SHORT).show()
         }
-        .section("Meme Coins", memeCoins) { KListItem(it) }
-        .Render()
+        .section("Meme Coins", memeCoins) {
+            KListItem(it)
+        }
+        .render()
 }
+```
+
+---
+
+## Project Structure
+
+| File               | Description                                 |
+|--------------------|---------------------------------------------|
+| `KList.kt`         | Core DSL class with chainable modifiers     |
+| `KListRenderer.kt` | Contains rendering logic with LazyColumn    |
+| `KListSection.kt`  | Section data model for list configuration   |
+| `KListItem.kt`     | Composable for rendering a single item      |
+| `KListDemo.kt`     | Composable function demonstrating usage     |
+| `CoinRepository.kt`| Provides fake coin data for demo            |
+| `MainActivity.kt`  | Launches the Compose-based home screen      |
+| `theme/`           | Custom Material 3 color and typography setup|
+
+---
+
+## How to Run
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/vatssumedha/KlistApi.git
+   ```
+2. Open in **Android Studio** (preferably Arctic Fox or later)
+3. Run on an emulator or device with Compose support
+
+---
+
+## Known Issues
+
+- Type casting via `Any` introduces unchecked cast warnings
+- Sticky headers not implemented
+- Paging/loading not included
+- Only one type of item per list section
+
+---
+
+## Future Enhancements
+
+- Add sticky headers using `LazyListScope.stickyHeader` to improve section visibility while scrolling
+- Integrate paging support via Jetpack's Paging 3 library to handle large data sets efficiently
+- Implement loading indicators (e.g., shimmer effect) and empty state UIs to improve UX
+- Use sealed classes or type-safe generics to support multiple item types within a single list
+- Add preview support using `@Preview` annotations for reusable components
