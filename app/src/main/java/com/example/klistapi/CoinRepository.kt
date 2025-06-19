@@ -1,7 +1,7 @@
 package com.example.klistapi
 
 
-// 💾 Repository object to provide fake/dummy coin data
+// Repository object to provide fake/dummy coin data
 
 object CoinRepository {
 
