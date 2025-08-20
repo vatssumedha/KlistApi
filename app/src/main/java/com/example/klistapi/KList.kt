@@ -11,44 +11,32 @@ import androidx.compose.ui.unit.dp
 
 class KList private constructor() {
 
-    // Padding for the entire list layout
     private var padding: Dp = 0.dp
 
-    // Optional top-level header text
+
     private var topHeader: String? = null
 
-    // Optional click listener for list items
+
     private var onItemClick: ((Any) -> Unit)? = null
 
-    // Holds all sections or unnamed lists configured by the user
+
     private val sections: MutableList<KListSection<*>> = mutableListOf()
 
     companion object {
-        // Entry point to create and configure a KList instance using fluent syntax
         val instance: KList
             get() = KList()
     }
 
-    /**
-     * Set padding for the full list container.
-     * @param value The padding in Dp
-     */
+
     fun padding(value: Dp): KList = apply {
         this.padding = value
     }
 
-    /**
-     * Add a main header title displayed at the top of the list.
-     * @param title The header text
-     */
     fun header(title: String): KList = apply {
         this.topHeader = title
     }
 
-    /**
-     * Attach a click handler for each list item.
-     * @param onClick Lambda invoked with the clicked item
-     */
+
     fun clickable(onClick: (Any) -> Unit): KList = apply {
         this.onItemClick = onClick
     }
