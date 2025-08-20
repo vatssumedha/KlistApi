@@ -60,10 +60,6 @@ class KList private constructor() {
         sections.add(KListSection(title, data, itemContent))
     }
 
-    /**
-     * Render the final KList screen using Compose.
-     * This must be called from within a @Composable function.
-     */
     @Composable
     fun Render() {
         KListRenderer(
